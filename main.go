@@ -14,10 +14,10 @@ import (
 
 type User struct {
 	gorm.Model
-	first_name string //`gorm:"type:varchar(30);column:first_name"`
-	last_name  string //`gorm:"type:varchar(30);column:last_name"`
-	sex        string //`gorm:"type:enum('M', 'F', 'O');column:sex"`
-	age        int    //`gorm:"type:smallint;column:age"`
+	FirstName string `gorm:"type:varchar(30);column:first_name"`
+	LastName  string `gorm:"type:varchar(30);column:last_name"`
+	Sex       string `gorm:"type:char(1);column:sex"`
+	Age       int    `gorm:"type:smallint;column:age"`
 }
 
 func newApp() (*iris.Application, *gorm.DB) {
@@ -50,19 +50,19 @@ func main() {
 	formHandler := hero.Handler(form)
 	app.Get("/", formHandler)
 
+	// Saving user to database
 	app.Post("/form/post", func(ctx iris.Context) {
 		fname := ctx.FormValue("first_name")
 		lname := ctx.FormValue("last_name")
 		age, _ := strconv.Atoi(ctx.FormValue("age"))
 		sex := ctx.FormValue("sex")
 		user := User{
-			first_name: fname,
-			last_name:  lname,
-			age:        age,
-			sex:        sex,
+			FirstName: fname,
+			LastName:  lname,
+			Age:       age,
+			Sex:       sex,
 		}
 		fmt.Println(fname, lname, age, sex)
-		fmt.Println(user)
 		if err := db.Create(&user); err != nil {
 			log.Println("Could not create a new user.")
 			ctx.Redirect("/")
@@ -72,6 +72,29 @@ func main() {
 			"code": 200,
 		})
 
+	})
+	// Listing all users from database
+	app.Get("/users/{id:uint}", func(ctx iris.Context) {
+		id, _ := ctx.Params().GetUint("id")
+		var user User
+		db.First(&user, int(id))
+		fmt.Println(user)
+		id     = user.ID
+		fname := user.FirstName
+		lname := user.LastName
+		age   := user.Age
+		sex   := user.Sex
+		fmt.Println(id, fname, lname, age, sex)
+		if id != 0 {
+			ctx.ViewData("id", strconv.Itoa(int(id)))
+			ctx.ViewData("fname", fname)
+			ctx.ViewData("lname", lname)
+			ctx.ViewData("age", strconv.Itoa(age))
+			ctx.ViewData("sex", sex)
+		} else {
+			ctx.ViewData("fname", "Could not find a user.")
+		}
+		ctx.View("user.html")
 	})
 
 	app.Run(iris.Addr(":3000"))
