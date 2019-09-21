@@ -19,6 +19,7 @@ type User struct {
 	Sex       string `gorm:"type:char(1);column:sex"`
 	Age       int    `gorm:"type:smallint;column:age"`
 }
+var notice, class string
 
 func newApp() (*iris.Application, *gorm.DB) {
 	app := iris.New()
@@ -106,7 +107,12 @@ func main() {
 	// Listing all users from database
 	app.Get("/users", func(ctx iris.Context) {
 		var users []User
-		db.Find(&users)
+		db.Order("id").Find(&users)
+		// Notice
+		ctx.ViewData("class", class)
+		class = ""
+		ctx.ViewData("notice", notice)
+		notice = ""
 		ctx.View("users/header_user.html")
 		for _, value := range users {
 			ctx.ViewData("id", value.ID)
@@ -125,9 +131,15 @@ func main() {
 		var user User
 		id, _ := ctx.Params().GetUint("id")
 		db.First(&user, id)
-		fmt.Println(user)
-		db.Delete(&user)
-		ctx.Redirect("/users")
+		fmt.Println(user.ID)
+		if user.ID == 0 {
+			notice = "User id do not exists."
+			class = "alert alert-danger"
+			ctx.Redirect("/users")
+		} else {
+			db.Delete(&user)
+			ctx.Redirect("/users")
+		}
 	})
 
 
