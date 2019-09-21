@@ -1,59 +1,18 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Iris Project with Gorm</title>
+        <title>Iris with Gorm</title>
 
-        <!-- Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <style>
-            .form-control {
-                margin-bottom: 10px;
-            }
-        </style>
     </head>
     <body>
         <div class="jumbotron">
-            <h1>Simple Form</h1>
+            This is Root Page
         </div>
         <div class="container">
-            <form class="form-group" action="/form/post" method="post">
-                <div class="row">
-                    <div class="col-md-2">
-                        <label for="first_name">First Name:</label>
-                    </div>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" name="first_name">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-2">
-                        <label for="last_name">Last Name:</label>
-                    </div>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" name="last_name">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-2">
-                        <label for="age">Birthday</label>
-                    </div>
-                    <div class="col-md-4">
-                        <input type="number" name="age" class="form-control">
-                    </div>
-                    <div class="col-md-2">
-                        <label for="sex">Sex</label>
-                    </div>
-                    <div class="col-md-4">
-                        <select class="form-control" name="sex">
-                            <option value="M">Male</option>
-                            <option value="F">Female</option>
-                            <option value="O">Other</option>
-                        </select>
-                    </div>
-                </div>
-                <input type="submit" class="btn btn-primary" value="Submit Form">
-            </form>
+            <a href="/form" class="btn btn-primary">Go to Form</a>
+            <a href="/users" class="btn btn-primary">Go to Users</a>
         </div>
     </body>
 </html>

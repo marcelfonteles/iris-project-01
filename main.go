@@ -47,8 +47,12 @@ func newApp() (*iris.Application, *gorm.DB) {
 func main() {
 	app, db := newApp()
 	defer db.Close()
+
+	rootHandler := hero.Handler(root)
+	app.Get("/", rootHandler)
+
 	formHandler := hero.Handler(form)
-	app.Get("/", formHandler)
+	app.Get("/form", formHandler)
 
 	// Saving user to database
 	app.Post("/form/post", func(ctx iris.Context) {
@@ -73,33 +77,58 @@ func main() {
 		})
 
 	})
-	// Listing all users from database
+	// Listing one user from database
 	app.Get("/users/{id:uint}", func(ctx iris.Context) {
 		id, _ := ctx.Params().GetUint("id")
 		var user User
 		db.First(&user, int(id))
-		fmt.Println(user)
+
 		id     = user.ID
 		fname := user.FirstName
 		lname := user.LastName
 		age   := user.Age
 		sex   := user.Sex
-		fmt.Println(id, fname, lname, age, sex)
+
 		if id != 0 {
 			ctx.ViewData("id", strconv.Itoa(int(id)))
 			ctx.ViewData("fname", fname)
 			ctx.ViewData("lname", lname)
 			ctx.ViewData("age", strconv.Itoa(age))
 			ctx.ViewData("sex", sex)
+			ctx.ViewData("text_user", "Users Page")
 		} else {
 			ctx.ViewData("fname", "Could not find a user.")
 		}
-		ctx.View("user.html")
+		ctx.View("users/header_user.html")
+		ctx.View("users/table_user.html")
+		ctx.View("users/footer_user.html")
 	})
+	// Listing all users from database
+	app.Get("/users", func(ctx iris.Context) {
+		var users []User
+		db.Find(&users)
+		ctx.View("users/header_user.html")
+		for _, value := range users {
+			ctx.ViewData("id", value.ID)
+			ctx.ViewData("user_id", value.ID)
+			ctx.ViewData("fname", value.FirstName)
+			ctx.ViewData("lname", value.LastName)
+			ctx.ViewData("sex", value.Sex)
+			ctx.ViewData("age", value.Age)
+			ctx.ViewData("text_user", "See User")
+			ctx.View("users/table_user.html")
+		}
+		ctx.View("/users/footer_user.html")
+	})
+
 
 	app.Run(iris.Addr(":3000"))
 }
 
 func form(ctx iris.Context) {
+	ctx.View("form/form.html")
+}
+
+func root(ctx iris.Context) {
 	ctx.View("index.html")
 }
