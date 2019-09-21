@@ -4,5 +4,8 @@
                     <td>{{ .lname }}</td>
                     <td>{{ .sex }}</td>
                     <td>{{ .age }}</td>
-                    <td><a href="/users/{{.user_id}}" class="btn btn-primary btn-sm">{{ .text_user}}</a></td>
+                    <td>
+                        <a href="/users/{{.user_id}}" class="btn btn-primary btn-sm">{{ .text_user}}</a>
+                        <a href="/users/{{.user_id}}/delete" data-confirm="Are you sure?" data-method="delete" class="btn btn-danger btn-sm">Delete User</a>
+                    </td>
                 </tr>

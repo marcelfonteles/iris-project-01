@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="47110a5b-a876-4e0e-8376-d45ebe9a23c7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/form/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/table_user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/users/footer_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/footer_user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/users/header_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/header_user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/users/table_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/table_user.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

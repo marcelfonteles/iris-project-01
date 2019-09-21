@@ -120,6 +120,15 @@ func main() {
 		}
 		ctx.View("/users/footer_user.html")
 	})
+	// Deleting one user from database
+	app.Get("/users/{id:uint}/delete", func (ctx iris.Context) {
+		var user User
+		id, _ := ctx.Params().GetUint("id")
+		db.First(&user, id)
+		fmt.Println(user)
+		db.Delete(&user)
+		ctx.Redirect("/users")
+	})
 
 
 	app.Run(iris.Addr(":3000"))
