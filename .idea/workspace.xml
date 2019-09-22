@@ -3,15 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="47110a5b-a876-4e0e-8376-d45ebe9a23c7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/users/header_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/header_user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/form/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/form/form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
   </component>
   <component name="GOROOT" path="/usr/local/go" />
   <component name="Git.Settings">
@@ -22,6 +28,7 @@
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
@@ -30,6 +37,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/app/datasource" />
       <recent name="$PROJECT_DIR$/app/views/form" />
       <recent name="$PROJECT_DIR$/app/views/users" />
     </key>
