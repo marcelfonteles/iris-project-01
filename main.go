@@ -15,6 +15,7 @@ func main() {
 	// Configuring Controllers
 	mvc.Configure(app.Party("/users"), controllers.User_controller)
 	mvc.Configure(app.Party("/"), controllers.About_controller)
+	mvc.Configure(app.Party("/clients"), controllers.Client_controller)
 	// Log appear on cosole
 	app.Logger().SetLevel("debug")
 	// Configuring Views

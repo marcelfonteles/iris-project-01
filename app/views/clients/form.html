@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>New Client Form</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <style>
+            .form-control {
+                margin-bottom: 10px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="jumbotron">
+            <h1>New Client Form</h1>
+        </div>
+        <div class="container">
+            <form action="/clients/new" method="post">
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="first_name">First Name:</label>
+                    </div>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" name="first_name">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="last_name">Last Name:</label>
+                    </div>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" name="last_name">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="last_name">Area:</label>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-control" name="area">
+                            <option value="Potato">Potato</option>
+                            <option value="Beans">Beans</option>
+                            <option value="Mango">Mango</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="last_name">Area:</label>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-control" name="user_id">
+                            {{ range .}}
+                                <option value="{{.ID}}">{{.FirstName}}</option>
+                            {{ end }}
+                        </select>
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-primary btn-sm" value="New Client">
+            </form>
+        </div>
+    </body>
+</html>
