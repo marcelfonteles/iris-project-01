@@ -11,5 +11,6 @@ func Connection() *gorm.DB {
 	if err != nil {
 		fmt.Println("Could not connect to database")
 	}
+	db.LogMode(true)
 	return db
 }

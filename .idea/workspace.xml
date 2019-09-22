@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="47110a5b-a876-4e0e-8376-d45ebe9a23c7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/form/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/form/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/users_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/users_controller.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/form/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/users/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/show.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasource/database_connection.go" beforeDir="false" afterPath="$PROJECT_DIR$/datasource/database_connection.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,10 +40,10 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/views/users" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/app/datasource" />
       <recent name="$PROJECT_DIR$/app/views/form" />
-      <recent name="$PROJECT_DIR$/app/views/users" />
     </key>
   </component>
   <component name="RunDashboard">

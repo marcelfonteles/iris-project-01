@@ -13,8 +13,8 @@ type User struct {
 	Age       int    `gorm:"type:smallint;column:age"`
 }
 
-func GetUser(id uint) User {
-	var user User
+func GetUser(id uint) []User {
+	var user []User
 	db := datasource.Connection()
 	defer db.Close()
 	db.First(&user, id)
@@ -25,7 +25,8 @@ func GetUsers() []User {
 	var users []User
 	db := datasource.Connection()
 	defer db.Close()
-	db.Find(&users)
+	defer db.AutoMigrate(&User{})
+	db.Order("id").Find(&users)
 	return users
 }
 
@@ -33,4 +34,16 @@ func NewUser(user User) uint {
 	db := datasource.Connection()
 	db.Create(&user)
 	return user.ID
+}
+
+func DeleteUser(id uint) bool {
+	db := datasource.Connection()
+	var user User
+	db.Where("id = ?", id).Find(&user)
+	if user.ID != 0 {
+		db.Delete(&user)
+		return true
+	} else {
+		return false
+	}
 }

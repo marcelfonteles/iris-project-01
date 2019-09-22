@@ -31,13 +31,16 @@
         </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">{{ .ID }}</th>
-                <td>{{ .FirstName }}</td>
-                <td>{{ .LastName }}</td>
-                <td>{{ .Sex }}</td>
-                <td>{{ .Age }}</td>
-            </tr>
+            {{ range .}}
+                <tr>
+                    <th scope="row">{{ .ID }}</th>
+                    <td>{{ .FirstName }}</td>
+                    <td>{{ .LastName }}</td>
+                    <td>{{ .Sex }}</td>
+                    <td>{{ .Age }}</td>
+                    <td><a href="/users/{{.ID}}/delete" class="btn btn-danger btn-sm">Delete User</a></td>
+                </tr>
+            {{ end }}
         </tbody>
     </table>
     <a href="/" class="btn btn-primary btn-sm">Root Page</a>

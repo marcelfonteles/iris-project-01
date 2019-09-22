@@ -23,16 +23,17 @@ func (u *userController) BeforeActivation(b mvc.BeforeActivation) {
 	b.Handle("GET", "/users/{id:uint}", "GetUser")
 	b.Handle("GET", "/users", "GetUsers")
 	b.Handle("POST", "/users/new", "NewUser")
+	b.Handle("GET", "/users/{id:uint}/delete", "DeleteUser")
 }
 
 func (u *userController) Form() mvc.Result {
 	return mvc.View{
-		Name: "form/form",
+		Name: "users/form",
 	}
 }
 
 func (u *userController) GetUser(id uint) mvc.Result {
-	var user models.User
+	var user []models.User
 	user = models.GetUser(id)
 	fmt.Println(user)
 	return mvc.View{
@@ -68,5 +69,15 @@ func (u *userController) NewUser(ctx iris.Context) {
 		ctx.Redirect("/users/form")
 	}
 	fmt.Println(user)
+}
+
+func (u *userController) DeleteUser(ctx iris.Context) {
+	id, _ := ctx.Params().GetUint("id")
+	success := models.DeleteUser(id)
+	if success {
+		ctx.Redirect("/users")
+	} else {
+		ctx.Redirect("/users/" + strconv.Itoa(int(id)))
+	}
 }
 
