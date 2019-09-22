@@ -12,10 +12,13 @@ import (
 
 func main() {
 	app := iris.New()
-	mvc.Configure(app.Party("/"), controllers.User_controller)
+	// Configuring Controllers
+	mvc.Configure(app.Party("/users"), controllers.User_controller)
+	mvc.Configure(app.Party("/"), controllers.About_controller)
+	// Log appear on cosole
 	app.Logger().SetLevel("debug")
-
+	// Configuring Views
 	app.RegisterView(iris.HTML("app/views", ".html"))
-
+	// Running Application
 	app.Run(iris.Addr(":3000"))
 }

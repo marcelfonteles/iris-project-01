@@ -19,11 +19,11 @@ type userController struct {
 }
 
 func (u *userController) BeforeActivation(b mvc.BeforeActivation) {
-	b.Handle("GET", "/users/form", "Form")
-	b.Handle("GET", "/users/{id:uint}", "GetUser")
-	b.Handle("GET", "/users", "GetUsers")
-	b.Handle("POST", "/users/new", "NewUser")
-	b.Handle("GET", "/users/{id:uint}/delete", "DeleteUser")
+	b.Handle("GET", "/form", "Form")
+	b.Handle("GET", "/{id:uint}", "GetUser")
+	b.Handle("GET", "/", "GetUsers")
+	b.Handle("POST", "/new", "NewUser")
+	b.Handle("GET", "/{id:uint}/delete", "DeleteUser")
 }
 
 func (u *userController) Form() mvc.Result {
