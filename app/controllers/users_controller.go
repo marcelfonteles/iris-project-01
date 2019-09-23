@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"fmt"
+	_"fmt"
 	"github.com/jinzhu/gorm"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/mvc"
@@ -35,7 +35,6 @@ func (u *userController) Form() mvc.Result {
 func (u *userController) GetUser(id uint) mvc.Result {
 	var user []models.User
 	user = models.GetUser(id)
-	fmt.Println(user)
 	return mvc.View{
 		Name: "users/show",
 		Data: user,
@@ -45,7 +44,6 @@ func (u *userController) GetUser(id uint) mvc.Result {
 func (u *userController) GetUsers() mvc.Result {
 	var users []models.User
 	users = models.GetUsers()
-	fmt.Println(users)
 	return mvc.View{
 		Name: "users/show",
 		Data: users,
@@ -68,7 +66,6 @@ func (u *userController) NewUser(ctx iris.Context) {
 	} else {
 		ctx.Redirect("/users/form")
 	}
-	fmt.Println(user)
 }
 
 func (u *userController) DeleteUser(ctx iris.Context) {
