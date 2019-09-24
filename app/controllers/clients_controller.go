@@ -36,8 +36,10 @@ func (c *clientController) Index() mvc.Result {
 
 func (c *clientController) Form(ctx iris.Context) mvc.Result {
 	var users []models.User
+	var client models.Client
 	users = models.GetUsers()
 	ctx.ViewData("users", users)
+	ctx.ViewData("client", client)
 	//ctx.ViewData()
 	return mvc.View{
 		Name: "clients/form",
