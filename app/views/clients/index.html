@@ -33,7 +33,10 @@
                         <td>{{ .LastName }}</td>
                         <td>{{ .Area }}</td>
                         <td>{{ .UserFirstName }}</td>
-                        <td><a href="/clients/{{.ID}}/delete" class="btn btn-danger btn-sm">Delete Client</a></td>
+                        <td>
+                            <a href="/clients/{{.ID}}/edit" class="btn btn-primary btn-sm">Edit Client</a>
+                            <a href="/clients/{{.ID}}/delete" class="btn btn-danger btn-sm">Delete Client</a>
+                        </td>
                     </tr>
                 {{ end }}
                 </tbody>

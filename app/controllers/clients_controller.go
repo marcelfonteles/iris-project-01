@@ -22,6 +22,7 @@ func (c *clientController) BeforeActivation(b mvc.BeforeActivation) {
 	b.Handle("GET", "/new", "Form")
 	b.Handle("POST", "/new", "CreateClient")
 	b.Handle("GET", "/{id:uint}/delete", "DeleteClient")
+	b.Handle("GET", "/{id:uint}/edit", "EditClient")
 }
 
 func (c *clientController) Index() mvc.Result {
@@ -33,12 +34,13 @@ func (c *clientController) Index() mvc.Result {
 	}
 }
 
-func (c *clientController) Form() mvc.Result {
+func (c *clientController) Form(ctx iris.Context) mvc.Result {
 	var users []models.User
 	users = models.GetUsers()
+	ctx.ViewData("users", users)
+	//ctx.ViewData()
 	return mvc.View{
 		Name: "clients/form",
-		Data: users,
 	}
 }
 
@@ -60,6 +62,21 @@ func (c *clientController) DeleteClient(ctx iris.Context) {
 	id, _ := ctx.Params().GetUint("id")
 	models.DeleteClient(id)
 	ctx.Redirect("/clients")
+}
+
+func (c *clientController) EditClient(ctx iris.Context) mvc.Result {
+	id, _ := ctx.Params().GetUint("id")
+	client := models.GetClient(id)
+	users := models.GetUsers()
+	ctx.ViewData("FirstName", client.FirstName)
+	ctx.ViewData("LastName", client.LastName)
+	ctx.ViewData("Area", client.Area)
+	ctx.ViewData("client", client)
+	ctx.ViewData("users", users)
+	return mvc.View{
+		Name: "clients/form",
+	}
+
 }
 
 

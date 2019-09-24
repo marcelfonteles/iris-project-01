@@ -23,7 +23,7 @@
                         <label for="first_name">First Name:</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" name="first_name">
+                        <input type="text" class="form-control" name="first_name" value="{{.FirstName}}">
                     </div>
                 </div>
                 <div class="row">
@@ -31,7 +31,7 @@
                         <label for="last_name">Last Name:</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" name="last_name">
+                        <input type="text" class="form-control" name="last_name" value="{{.LastName}}">
                     </div>
                 </div>
                 <div class="row">
@@ -39,22 +39,24 @@
                         <label for="age">Age</label>
                     </div>
                     <div class="col-md-4">
-                        <input type="number" name="age" class="form-control">
+                        <input type="number" name="age" class="form-control" value="{{.Age}}">
                     </div>
                     <div class="col-md-2">
                         <label for="sex">Sex</label>
                     </div>
                     <div class="col-md-4">
                         <select class="form-control" name="sex">
-                            <option value="M">Male</option>
-                            <option value="F">Female</option>
-                            <option value="O">Other</option>
+                            <option value="M" {{if eq .Sex "M"}} selected {{ end }}>Male</option>
+                            <option value="F" {{if eq .Sex "F"}} selected {{ end }}>Female</option>
+                            <option value="O" {{if eq .Sex "O"}} selected {{ end }}>Other</option>
                         </select>
                     </div>
                 </div>
                 <input type="submit" class="btn btn-primary btn-sm" value="Submit Form">
-                <a href="/" class="btn btn-primary btn-sm">Root Page</a>
             </form>
+            <hr>
+            <a href="/" class="btn btn-primary btn-sm">Root Page</a>
+            <a href="/users" class="btn btn-primary btn-sm">Users Page</a>
         </div>
     </body>
 </html>

@@ -22,10 +22,10 @@
             <form action="/clients/new" method="post">
                 <div class="row">
                     <div class="col-md-2">
-                        <label for="first_name">First Name:</label>
+                        <label for="first_name" >First Name:</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" name="first_name">
+                        <input type="text" class="form-control" name="first_name" value="{{.FirstName}}">
                     </div>
                 </div>
                 <div class="row">
@@ -33,7 +33,7 @@
                         <label for="last_name">Last Name:</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" name="last_name">
+                        <input type="text" class="form-control" name="last_name" value="{{.LastName}}">
                     </div>
                 </div>
                 <div class="row">
@@ -41,7 +41,7 @@
                         <label for="area">Area:</label>
                     </div>
                     <div class="col-md-4">
-                        <select class="form-control" name="area">
+                        <select class="form-control" name="area" value="{{.Area}}">
                             <option value="Potato">Potato</option>
                             <option value="Beans">Beans</option>
                             <option value="Mango">Mango</option>
@@ -52,14 +52,17 @@
                     </div>
                     <div class="col-md-4">
                         <select class="form-control" name="user_id">
-                            {{ range .}}
-                                <option value="{{.ID}}">{{.FirstName}}</option>
+                            {{ range .users}}
+                                <option value="{{.ID}}" {{ if eq .ID $.client.User_id}} selected {{ end }}>{{.FirstName}}</option>
                             {{ end }}
                         </select>
                     </div>
                 </div>
                 <input type="submit" class="btn btn-primary btn-sm" value="New Client">
             </form>
+            <hr>
+            <a href="/" class="btn btn-primary btn-sm">Root Page</a>
+            <a href="/clients" class="btn btn-primary btn-sm">Clients Page</a>
         </div>
     </body>
 </html>

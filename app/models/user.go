@@ -13,8 +13,8 @@ type User struct {
 	Age       int    `gorm:"type:smallint;column:age"`
 }
 
-func GetUser(id uint) []User {
-	var user []User
+func GetUser(id uint) User {
+	var user User
 	db := datasource.Connection()
 	defer db.Close()
 	db.First(&user, id)

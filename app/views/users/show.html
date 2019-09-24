@@ -38,7 +38,10 @@
                     <td>{{ .LastName }}</td>
                     <td>{{ .Sex }}</td>
                     <td>{{ .Age }}</td>
-                    <td><a href="/users/{{.ID}}/delete" class="btn btn-danger btn-sm">Delete User</a></td>
+                    <td>
+                        <a href="/users/{{.ID}}/edit" class="btn btn-primary btn-sm">Edit User</a>
+                        <a href="/users/{{.ID}}/delete" class="btn btn-danger btn-sm">Delete User</a>
+                    </td>
                 </tr>
             {{ end }}
         </tbody>
