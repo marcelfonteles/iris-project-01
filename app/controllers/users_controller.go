@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	_"fmt"
+	_ "fmt"
 	"github.com/jinzhu/gorm"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/mvc"
@@ -25,6 +25,9 @@ func (u *userController) BeforeActivation(b mvc.BeforeActivation) {
 	b.Handle("POST", "/new", "NewUser")
 	b.Handle("GET", "/{id:uint}/delete", "DeleteUser")
 	b.Handle("GET", "/{id:uint}/edit", "EditUser")
+
+	// TODO: change for a new controller later
+	b.Handle("GET", "/persons", "Persons")
 }
 
 func (u *userController) Form() mvc.Result {
@@ -86,4 +89,11 @@ func (u * userController) EditUser(ctx iris.Context) mvc.Result {
 		Name: "users/form",
 		Data: user,
 	}
+}
+
+// TODO: change for a new conroller later
+func (u *userController) Persons(ctx iris.Context) {
+	var people []models.Person
+	people = models.GetPersons()
+	ctx.JSON(people)
 }
