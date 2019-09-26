@@ -1,7 +1,9 @@
 package controllers
 
 import (
+	"fmt"
 	_ "fmt"
+	"github.com/golang/protobuf/proto"
 	"github.com/jinzhu/gorm"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/mvc"
@@ -28,6 +30,7 @@ func (u *userController) BeforeActivation(b mvc.BeforeActivation) {
 
 	// TODO: change for a new controller later
 	b.Handle("GET", "/persons", "Persons")
+	b.Handle("POST", "/persons/new", "NewPersons")
 }
 
 func (u *userController) Form() mvc.Result {
@@ -95,5 +98,23 @@ func (u * userController) EditUser(ctx iris.Context) mvc.Result {
 func (u *userController) Persons(ctx iris.Context) {
 	var people []models.Person
 	people = models.GetPersons()
-	ctx.JSON(people)
+	//ctx.JSON(people)
+	var data []byte
+	//for _, value := range people {
+	//	proto_data, _ := proto.Marshal(&value)
+	//	data = append(data, proto_data)
+	//}
+	data, _ = proto.Marshal(&people[0])
+	fmt.Println(data)
+	fmt.Printf("%T\n",data)
+	ctx.Binary(data)
+}
+
+func (u *userController) NewPersons(ctx iris.Context) {
+	data, _ := ctx.GetBody()
+	fmt.Println(data)
+	fmt.Println(string(data))
+	var person models.Person
+	proto.Unmarshal(data, &person)
+	fmt.Println(person)
 }

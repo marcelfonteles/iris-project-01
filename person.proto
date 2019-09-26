@@ -1,6 +1,6 @@
 syntax="proto3";
 
-package main;
+
 
 message person {
     string name = 1;
